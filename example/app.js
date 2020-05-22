@@ -5,7 +5,7 @@ var win = Ti.UI.createWindow({
 });
 
 win.add(Ti.UI.createImageView({
-    image: QRCode.fromString('https://lambus.io')
+    image: QRCode.fromString('https:/google.com')
 }));
 
 win.open();
