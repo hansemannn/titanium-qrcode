@@ -8,22 +8,33 @@
  */
 package ti.qrcode;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
+import org.appcelerator.kroll.KrollDict;
+import org.appcelerator.kroll.KrollFunction;
 import org.appcelerator.kroll.KrollModule;
 import org.appcelerator.kroll.annotations.Kroll;
+import org.appcelerator.titanium.TiApplication;
 import org.appcelerator.titanium.TiBlob;
+import org.appcelerator.titanium.TiLifecycle;
 
 
 @Kroll.module(name="TitaniumQrcode", id="ti.qrcode")
-public class TitaniumQrcodeModule extends KrollModule
+public class TitaniumQrcodeModule extends KrollModule implements TiLifecycle.OnActivityResultEvent
 {
+	private KrollFunction _currentScanCallback;
+
 	@Kroll.method
 	public TiBlob fromString(String text)
 	{
@@ -38,6 +49,34 @@ public class TitaniumQrcodeModule extends KrollModule
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	@Kroll.method
+	public void scan(KrollFunction callback)
+	{
+		_currentScanCallback = callback;
+
+		IntentIntegrator integrator = new IntentIntegrator(TiApplication.getAppCurrentActivity());
+		integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
+		integrator.setPrompt("");
+		integrator.setOrientationLocked(false);
+		integrator.setBarcodeImageEnabled(true);
+		integrator.initiateScan();
+	}
+
+	@Override
+	public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent data)
+	{
+		IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+		if (result == null || _currentScanCallback == null) { return; }
+
+		String text = result.getContents();
+		KrollDict event = new KrollDict();
+		event.put("text", text != null);
+		event.put("success", text != null);
+
+		_currentScanCallback.callAsync(getKrollObject(), event);
+		_currentScanCallback = null;
 	}
 }
 

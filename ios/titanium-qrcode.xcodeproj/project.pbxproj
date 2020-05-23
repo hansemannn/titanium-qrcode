@@ -11,6 +11,7 @@
 		3A017F4424787C98000776DE /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A017F4024787C98000776DE /* QRCode.swift */; };
 		3A017F4524787C98000776DE /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A017F4124787C98000776DE /* UIImageViewExtension.swift */; };
 		3A017F4624787C98000776DE /* CIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A017F4224787C98000776DE /* CIImageExtension.swift */; };
+		3AF1315124788D7C00A012FF /* QRCodeReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF1315024788D7C00A012FF /* QRCodeReader.framework */; };
 		DB34CDE0207B998A005F8E8C /* TiQrcodeModuleAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = DB34CDDE207B998A005F8E8C /* TiQrcodeModuleAssets.m */; };
 		DB34CDE1207B998A005F8E8C /* TiQrcodeModuleAssets.h in Headers */ = {isa = PBXBuildFile; fileRef = DB34CDDF207B998A005F8E8C /* TiQrcodeModuleAssets.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB34CDE6207B9EBD005F8E8C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB34CDE5207B9EBD005F8E8C /* Foundation.framework */; };
@@ -25,6 +26,7 @@
 		3A017F4024787C98000776DE /* QRCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QRCode.swift; path = Classes/QRCode.swift; sourceTree = "<group>"; };
 		3A017F4124787C98000776DE /* UIImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImageViewExtension.swift; path = Classes/UIImageViewExtension.swift; sourceTree = "<group>"; };
 		3A017F4224787C98000776DE /* CIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CIImageExtension.swift; path = Classes/CIImageExtension.swift; sourceTree = "<group>"; };
+		3AF1315024788D7C00A012FF /* QRCodeReader.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QRCodeReader.framework; path = platform/QRCodeReader.framework; sourceTree = "<group>"; };
 		DB34CDDE207B998A005F8E8C /* TiQrcodeModuleAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TiQrcodeModuleAssets.m; path = Classes/TiQrcodeModuleAssets.m; sourceTree = SOURCE_ROOT; };
 		DB34CDDF207B998A005F8E8C /* TiQrcodeModuleAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TiQrcodeModuleAssets.h; path = Classes/TiQrcodeModuleAssets.h; sourceTree = SOURCE_ROOT; };
 		DB34CDE5207B9EBD005F8E8C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -42,6 +44,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBB66221208481A800EAD6D9 /* TitaniumKit.framework in Frameworks */,
+				3AF1315124788D7C00A012FF /* QRCodeReader.framework in Frameworks */,
 				DB34CDE6207B9EBD005F8E8C /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -93,6 +96,7 @@
 		DB34CDE2207B9D6A005F8E8C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3AF1315024788D7C00A012FF /* QRCodeReader.framework */,
 				DB34CDE5207B9EBD005F8E8C /* Foundation.framework */,
 			);
 			name = Frameworks;
@@ -377,6 +381,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/platform",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TiQrcode_Prefix.pch;
@@ -419,6 +424,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/platform",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TiQrcode_Prefix.pch;
