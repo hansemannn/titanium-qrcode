@@ -3,25 +3,38 @@ package ti.qrcode
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import com.google.zxing.integration.android.IntentIntegrator
+import com.google.zxing.Result
+import me.dm7.barcodescanner.zxing.ZXingScannerView
 
-class QRCodeScannerActivity : Activity() {
+class QRCodeScannerActivity : Activity(), ZXingScannerView.ResultHandler {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    private var scannerView: ZXingScannerView? = null
 
-        val integrator = IntentIntegrator(this)
-        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES)
-        integrator.setPrompt("")
-        integrator.setOrientationLocked(false)
-        integrator.setBarcodeImageEnabled(false)
-        integrator.initiateScan()
+    public override fun onCreate(state: Bundle?) {
+        super.onCreate(state)
+
+        scannerView = ZXingScannerView(this)
+        setContentView(scannerView)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
+    public override fun onResume() {
+        super.onResume()
 
-        setResult(resultCode, data)
+        scannerView?.setResultHandler(this)
+        scannerView?.startCamera()
+    }
+
+    public override fun onPause() {
+        super.onPause()
+
+        scannerView?.stopCamera() // Stop camera on pause
+    }
+
+    override fun handleResult(rawResult: Result) {
+        val resultIntent = Intent()
+
+        resultIntent.putExtra("text", rawResult.text)
+        setResult(RESULT_OK, resultIntent)
         finish()
     }
 }

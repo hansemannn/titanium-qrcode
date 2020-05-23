@@ -51,17 +51,16 @@ class TitaniumQrcodeModule : KrollModule(), TiActivityResultHandler {
     }
 
     override fun onResult(activity: Activity, requestCode: Int, resultCode: Int, data: Intent) {
-        val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
+        val result = data.getStringExtra("text")
 
-        if (requestCode != _requestCode || result == null || _currentScanCallback == null) {
+        if (resultCode != Activity.RESULT_OK || result == null || _currentScanCallback == null) {
             return
         }
 
-        val text = result.contents
         val event = KrollDict()
 
-        event["text"] = text != null
-        event["success"] = text != null
+        event["text"] = result
+        event["success"] = result != null
 
         _currentScanCallback!!.callAsync(getKrollObject(), event)
         _currentScanCallback = null
