@@ -5,7 +5,6 @@ import android.content.Intent
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.MultiFormatWriter
 import com.google.zxing.WriterException
-import com.google.zxing.integration.android.IntentIntegrator
 import com.journeyapps.barcodescanner.BarcodeEncoder
 import org.appcelerator.kroll.KrollDict
 import org.appcelerator.kroll.KrollFunction
@@ -50,27 +49,25 @@ class TitaniumQrcodeModule : KrollModule(), TiActivityResultHandler {
         support.launchActivityForResult(scanIntent, _requestCode, this)
     }
 
-    override fun onResult(activity: Activity, requestCode: Int, resultCode: Int, data: Intent) {
-        val result = data.getStringExtra("text")
-
-        if (resultCode != Activity.RESULT_OK || result == null || _currentScanCallback == null) {
+    override fun onResult(activity: Activity, requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode != Activity.RESULT_OK || data == null || _currentScanCallback == null) {
             return
         }
 
-        val event = KrollDict()
+        data.getStringExtra("text")?.let { text ->
+            val event = KrollDict()
 
-        event["text"] = result
-        event["success"] = result != null
+            event["text"] = text
+            event["success"] = true
 
-        _currentScanCallback!!.callAsync(getKrollObject(), event)
-        _currentScanCallback = null
+            this._currentScanCallback?.let { it.callAsync(getKrollObject(), event) }
+        }
     }
 
     override fun onError(activity: Activity, i: Int, e: Exception) {
         val event = KrollDict()
         event["success"] = false
 
-        _currentScanCallback!!.callAsync(getKrollObject(), event)
-        _currentScanCallback = null
+        this._currentScanCallback?.let { it.callAsync(getKrollObject(), event) }
     }
 }
