@@ -20,9 +20,13 @@ class TiQrcodeModule: TiModule {
           $0.showSwitchCameraButton = false
           $0.showCancelButton       = true
           $0.showOverlayView        = false
+          $0.cancelButtonTitle = NSLocalizedString("cancel", comment: "Cancel")
       }
       
-      return QRCodeReaderViewController(builder: builder)
+      let vc = QRCodeReaderViewController(builder: builder)
+      vc.delegate = self
+      
+      return vc
   }()
   
   private lazy var topMostViewController: UIViewController? = {
@@ -62,8 +66,6 @@ class TiQrcodeModule: TiModule {
     guard let arguments = arguments, let callback = arguments.first as? KrollCallback else {
       return
     }
-
-    readerVC.delegate = self
 
     readerVC.completionBlock = { (result: QRCodeReaderResult?) in
       callback.call([["text": result?.value ?? "", "success": result != nil]], thisObject: self)
