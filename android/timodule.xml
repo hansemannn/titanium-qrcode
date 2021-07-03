@@ -7,5 +7,9 @@
 	<iphone>
 	</iphone>
 	<android xmlns:android="http://schemas.android.com/apk/res/android">
+		<manifest xmlns:tools="http://schemas.android.com/tools">
+			<!-- Required for API 21 backwards compatibility, see: https://github.com/journeyapps/zxing-android-embedded#older-sdk-versions -->
+			<uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
+		</manifest>
 	</android>
 </ti:module>
