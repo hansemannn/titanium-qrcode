@@ -32,3 +32,5 @@ nbproject
 firebase.auth-iphone-*.zip
 /ios/metadata.json
 /ios/Carthage
+/android/.gradle
+/android/.project

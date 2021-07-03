@@ -2,17 +2,18 @@
 # this is your module manifest and used by Titanium
 # during compilation, packaging, distribution, etc.
 #
-version: 1.1.0
+version: 1.1.1
 apiversion: 2
-architectures: armv7 arm64 i386 x86_64
+architectures: arm64 x86_64
 description: titanium-qrcode is a Swift based Titanium module.
 author: Hans Knoechel
-license: Specify your license
-copyright: Copyright (c) 2020 by Your Company
+license: MIT
+copyright: Copyright (c) 2020-present by Hans Knoechel
+mac: false
 
 # these should not be edited
 name: titanium-qrcode
 moduleid: ti.qrcode
 guid: bb7cc9ed-8591-467b-8608-be59b82bf201
 platform: iphone
-minsdk: 9.0.0
+minsdk: 9.2.0

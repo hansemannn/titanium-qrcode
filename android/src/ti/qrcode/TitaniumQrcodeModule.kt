@@ -2,10 +2,14 @@ package ti.qrcode
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.ColorMatrixColorFilter
+
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.MultiFormatWriter
 import com.google.zxing.WriterException
+
 import com.journeyapps.barcodescanner.BarcodeEncoder
+
 import org.appcelerator.kroll.KrollDict
 import org.appcelerator.kroll.KrollFunction
 import org.appcelerator.kroll.KrollModule
@@ -24,6 +28,7 @@ class TitaniumQrcodeModule : KrollModule(), TiActivityResultHandler {
     @method
     fun fromString(text: String?): TiBlob? {
         val multiFormatWriter = MultiFormatWriter()
+
         return try {
             val bitMatrix = multiFormatWriter.encode(text, BarcodeFormat.QR_CODE, 450, 450)
             val barcodeEncoder = BarcodeEncoder()

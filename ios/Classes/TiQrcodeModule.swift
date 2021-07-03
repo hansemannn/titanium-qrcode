@@ -3,10 +3,9 @@
 //  titanium-qrcode
 //
 //  Created by Hans Knoechel
-//  Copyright (c) 2020 Your Company. All rights reserved.
+//  Copyright (c) 2020 Hans Knoechel. All rights reserved.
 //
 
-import QRCodeReader
 import TitaniumKit
 
 @objc(TiQrcodeModule)
@@ -25,12 +24,28 @@ class TiQrcodeModule: TiModule {
     guard let arguments = arguments, let text = arguments.first as? String else {
       return nil
     }
-
+    
     guard var qrCode = QRCode(text) else {
       return nil
     }
 
     qrCode.size = CGSize(width: 450, height: 450)
+    
+    if let options = arguments[1] as? [String: Any] {
+      if let size = options["size"] as? [String: Int],
+        let width = size["width"],
+        let height = size["height"] {
+        qrCode.size = CGSize(width: width, height: height)
+      }
+      
+      if let color = options["color"], let nativeColor = TiUtils.colorValue(color) {
+        qrCode.color = CIColor(color: nativeColor.color)
+      }
+      
+      if let backgroundColor = options["backgroundColor"], let nativeBackgroundColor = TiUtils.colorValue(backgroundColor) {
+        qrCode.backgroundColor = CIColor(color: nativeBackgroundColor.color)
+      }
+    }
 
     return TiBlob(image: qrCode.image)
   }
