@@ -27,6 +27,7 @@
 import UIKit
 
 /// The `QRCodeReaderDisplayable` procotol that each view embeded a `QRCodeReaderContainer` must conforms to. It defines the required UI component needed and the mandatory methods.
+@available(macCatalyst 14.0, *)
 public protocol QRCodeReaderDisplayable {
   /// The view that display video as it is being captured by the camera.
   var cameraView: UIView { get }
@@ -55,6 +56,7 @@ public protocol QRCodeReaderDisplayable {
 }
 
 /// The `QRCodeReaderContainer` structure embed the view displayed by the controller. The embeded view must be conform to the `QRCodeReaderDisplayable` protocol.
+@available(macCatalyst 14.0, *)
 public struct QRCodeReaderContainer {
   let view: UIView
   let displayable: QRCodeReaderDisplayable

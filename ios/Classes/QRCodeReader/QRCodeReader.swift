@@ -27,30 +27,20 @@
 import UIKit
 import AVFoundation
 
-protocol QRCodeReaderLifeCycleDelegate: class {
+protocol QRCodeReaderLifeCycleDelegate: AnyObject {
   func readerDidStartScanning()
   func readerDidStopScanning()
 }
 
 /// Reader object base on the `AVCaptureDevice` to read / scan 1D and 2D codes.
+@available(macCatalyst 14.0, *)
 public final class QRCodeReader: NSObject, AVCaptureMetadataOutputObjectsDelegate {
   private let sessionQueue         = DispatchQueue(label: "session queue")
   private let metadataObjectsQueue = DispatchQueue(label: "com.yannickloriot.qr", attributes: [], target: nil)
   
   let defaultDevice: AVCaptureDevice? = AVCaptureDevice.default(for: .video)
   let frontDevice: AVCaptureDevice?   = {
-    if #available(iOS 10, *) {
-      return AVCaptureDevice.default(.builtInWideAngleCamera, for: AVMediaType.video, position: .front)
-    }
-    else {
-      for device in AVCaptureDevice.devices(for: AVMediaType.video) {
-        if device.position == .front {
-          return device
-        }
-      }
-    }
-
-    return nil
+    return AVCaptureDevice.default(.builtInWideAngleCamera, for: AVMediaType.video, position: .front)
   }()
 
   lazy var defaultDeviceInput: AVCaptureDeviceInput? = {

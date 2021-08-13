@@ -31,6 +31,7 @@ import UIKit
  The QRCodeViewControllerBuilder aims to create a simple configuration object for
  the QRCode view controller.
  */
+@available(macCatalyst 14.0, *)
 public final class QRCodeReaderViewControllerBuilder {
   // MARK: - Configuring the QRCodeViewController Objects
 

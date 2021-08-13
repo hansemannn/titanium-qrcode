@@ -8,6 +8,7 @@
 
 import TitaniumKit
 
+@available(macCatalyst 14.0, *)
 @objc(TiQrcodeModule)
 class TiQrcodeModule: TiModule {
 
@@ -89,6 +90,7 @@ class TiQrcodeModule: TiModule {
 
 // MARK: QRCodeReaderViewControllerDelegate
 
+@available(macCatalyst 14.0, *)
 extension TiQrcodeModule : QRCodeReaderViewControllerDelegate {
 
   func reader(_ reader: QRCodeReaderViewController, didScanResult result: QRCodeReaderResult) {
