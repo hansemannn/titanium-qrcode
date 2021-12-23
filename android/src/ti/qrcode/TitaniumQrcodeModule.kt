@@ -15,6 +15,7 @@ import org.appcelerator.kroll.KrollFunction
 import org.appcelerator.kroll.KrollModule
 import org.appcelerator.kroll.annotations.Kroll.method
 import org.appcelerator.kroll.annotations.Kroll.module
+import org.appcelerator.kroll.common.Log
 import org.appcelerator.titanium.TiApplication
 import org.appcelerator.titanium.TiBlob
 import org.appcelerator.titanium.util.TiActivityResultHandler
@@ -37,7 +38,7 @@ class TitaniumQrcodeModule : KrollModule(), TiActivityResultHandler {
             TiBlob.blobFromImage(bitmap)
         } catch (e: WriterException) {
             e.printStackTrace()
-            
+
             null
         }
     }
@@ -72,7 +73,7 @@ class TitaniumQrcodeModule : KrollModule(), TiActivityResultHandler {
     override fun onError(activity: Activity, i: Int, e: Exception) {
         val event = KrollDict()
         event["success"] = false
-
+        Log.e("ti.qrcode", "Error: " + e.message)
         this._currentScanCallback?.let { it.callAsync(getKrollObject(), event) }
     }
 }
