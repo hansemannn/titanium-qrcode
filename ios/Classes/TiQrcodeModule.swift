@@ -7,6 +7,7 @@
 //
 
 import TitaniumKit
+import QRScanner
 
 @available(macCatalyst 14.0, *)
 @objc(TiQrcodeModule)
@@ -19,6 +20,8 @@ class TiQrcodeModule: TiModule {
   override func moduleId() -> String! {
     return "ti.qrcode"
   }
+  
+  var _scannerCallback: KrollCallback?
 
   @objc(fromString:)
   func fromString(arguments: Array<Any>?) -> TiBlob? {
@@ -53,29 +56,26 @@ class TiQrcodeModule: TiModule {
 
   @objc(scan:)
    func scan(arguments: Array<Any>?) {
-    guard let arguments = arguments, let callback = arguments.first as? KrollCallback else {
-      return
-    }
-    
-    let builder = QRCodeReaderViewControllerBuilder {
-        $0.reader = QRCodeReader(metadataObjectTypes: [.qr], captureDevicePosition: .back)
-        
-        $0.showTorchButton        = false
-        $0.showSwitchCameraButton = false
-        $0.showCancelButton       = true
-        $0.showOverlayView        = false
-        $0.cancelButtonTitle = NSLocalizedString("cancel", comment: "Cancel")
-    }
-    
-    let readerVC = QRCodeReaderViewController(builder: builder)
-    readerVC.delegate = self
+     guard let arguments = arguments,
+           let params = arguments.first as? [String: Any],
+           let callback = params["callback"] as? KrollCallback else {
+       return
+     }
+     
+     _scannerCallback = callback
 
-    readerVC.completionBlock = { (result: QRCodeReaderResult?) in
-      callback.call([["text": result?.value ?? "", "success": result != nil]], thisObject: self)
-    }
+     let focusImage = TiUtils.toImage(params["scanImage"], proxy: self)
+     
+     let vc = UIViewController()
+     let qrScannerView = QRScannerView(frame: vc.view.bounds)
+     vc.view.addSubview(qrScannerView)
+     qrScannerView.configure(delegate: self, input: .init(focusImage: focusImage, animationDuration: 0.75, isBlurEffectEnabled: true))
+     qrScannerView.startRunning()
+     
+     let nav = UINavigationController(rootViewController: vc)
+     nav.isNavigationBarHidden = true
 
-    readerVC.modalPresentationStyle = .formSheet
-    topMostViewController()?.present(readerVC, animated: true, completion: nil)
+     topMostViewController()?.present(nav, animated: true)
   }
   
   private func topMostViewController() -> UIViewController? {
@@ -88,20 +88,34 @@ class TiQrcodeModule: TiModule {
    }
 }
 
-// MARK: QRCodeReaderViewControllerDelegate
+// MARK: QRScannerViewDelegate
 
-@available(macCatalyst 14.0, *)
-extension TiQrcodeModule : QRCodeReaderViewControllerDelegate {
+extension TiQrcodeModule: QRScannerViewDelegate {
+  func qrScannerView(_ qrScannerView: QRScannerView, didSuccess code: String) {
+    qrScannerView.parentViewController?.dismiss(animated: true)
 
-  func reader(_ reader: QRCodeReaderViewController, didScanResult result: QRCodeReaderResult) {
-    reader.stopScanning()
-
-    reader.dismiss(animated: true, completion: nil)
+    _scannerCallback?.call([["success": true, "text": code]], thisObject: self)
+    _scannerCallback = nil
   }
+  
+  func qrScannerView(_ qrScannerView: QRScannerView, didFailure error: QRScannerError) {
+    qrScannerView.parentViewController?.dismiss(animated: true)
 
-  func readerDidCancel(_ reader: QRCodeReaderViewController) {
-    reader.stopScanning()
-
-    reader.dismiss(animated: true, completion: nil)
+    _scannerCallback?.call([["success": false, "error": error.localizedDescription]], thisObject: self)
+    _scannerCallback = nil
   }
+}
+
+extension UIView {
+    var parentViewController: UIViewController? {
+        // Starts from next (As we know self is not a UIViewController).
+        var parentResponder: UIResponder? = self.next
+        while parentResponder != nil {
+            if let viewController = parentResponder as? UIViewController {
+                return viewController
+            }
+            parentResponder = parentResponder?.next
+        }
+        return nil
+    }
 }

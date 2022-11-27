@@ -13,6 +13,7 @@ import com.journeyapps.barcodescanner.BarcodeEncoder
 import org.appcelerator.kroll.KrollDict
 import org.appcelerator.kroll.KrollFunction
 import org.appcelerator.kroll.KrollModule
+import org.appcelerator.kroll.annotations.Kroll
 import org.appcelerator.kroll.annotations.Kroll.method
 import org.appcelerator.kroll.annotations.Kroll.module
 import org.appcelerator.kroll.common.Log
@@ -44,8 +45,8 @@ class TitaniumQrcodeModule : KrollModule(), TiActivityResultHandler {
     }
 
     @method
-    fun scan(callback: KrollFunction?) {
-        _currentScanCallback = callback
+    fun scan(params: KrollDict) {
+        _currentScanCallback = params["callback"] as? KrollFunction
 
         val activity = TiApplication.getInstance().currentActivity
         val support = activity as TiActivitySupport

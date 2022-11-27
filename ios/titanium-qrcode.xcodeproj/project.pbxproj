@@ -11,17 +11,8 @@
 		3A017F4424787C98000776DE /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A017F4024787C98000776DE /* QRCode.swift */; };
 		3A017F4524787C98000776DE /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A017F4124787C98000776DE /* UIImageViewExtension.swift */; };
 		3A017F4624787C98000776DE /* CIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A017F4224787C98000776DE /* CIImageExtension.swift */; };
-		3A2DF8BD262F4D84000FC8B8 /* QRCodeReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2DF8B3262F4D84000FC8B8 /* QRCodeReader.swift */; };
-		3A2DF8BE262F4D84000FC8B8 /* QRCodeReaderViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2DF8B4262F4D84000FC8B8 /* QRCodeReaderViewControllerDelegate.swift */; };
-		3A2DF8BF262F4D84000FC8B8 /* QRCodeReaderViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2DF8B5262F4D84000FC8B8 /* QRCodeReaderViewContainer.swift */; };
-		3A2DF8C0262F4D84000FC8B8 /* QRCodeReaderViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2DF8B6262F4D84000FC8B8 /* QRCodeReaderViewControllerBuilder.swift */; };
-		3A2DF8C1262F4D84000FC8B8 /* QRCodeReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2DF8B7262F4D84000FC8B8 /* QRCodeReaderView.swift */; };
-		3A2DF8C2262F4D84000FC8B8 /* QRCodeReaderResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2DF8B8262F4D84000FC8B8 /* QRCodeReaderResult.swift */; };
-		3A2DF8C3262F4D84000FC8B8 /* SwitchCameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2DF8B9262F4D84000FC8B8 /* SwitchCameraButton.swift */; };
-		3A2DF8C4262F4D84000FC8B8 /* QRCodeReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2DF8BA262F4D84000FC8B8 /* QRCodeReaderViewController.swift */; };
-		3A2DF8C5262F4D84000FC8B8 /* ToggleTorchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2DF8BB262F4D84000FC8B8 /* ToggleTorchButton.swift */; };
-		3A2DF8C6262F4D84000FC8B8 /* ReaderOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2DF8BC262F4D84000FC8B8 /* ReaderOverlayView.swift */; };
 		3A2DF8CB262F4DB6000FC8B8 /* TitaniumKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A2DF8CA262F4DB6000FC8B8 /* TitaniumKit.xcframework */; };
+		3A62FEC229339C33005468CC /* QRScanner.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A62FEC129339C33005468CC /* QRScanner.xcframework */; };
 		DB34CDE0207B998A005F8E8C /* TiQrcodeModuleAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = DB34CDDE207B998A005F8E8C /* TiQrcodeModuleAssets.m */; };
 		DB34CDE1207B998A005F8E8C /* TiQrcodeModuleAssets.h in Headers */ = {isa = PBXBuildFile; fileRef = DB34CDDF207B998A005F8E8C /* TiQrcodeModuleAssets.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB34CDE6207B9EBD005F8E8C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB34CDE5207B9EBD005F8E8C /* Foundation.framework */; };
@@ -35,17 +26,8 @@
 		3A017F4024787C98000776DE /* QRCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QRCode.swift; path = Classes/QRCode.swift; sourceTree = "<group>"; };
 		3A017F4124787C98000776DE /* UIImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImageViewExtension.swift; path = Classes/UIImageViewExtension.swift; sourceTree = "<group>"; };
 		3A017F4224787C98000776DE /* CIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CIImageExtension.swift; path = Classes/CIImageExtension.swift; sourceTree = "<group>"; };
-		3A2DF8B3262F4D84000FC8B8 /* QRCodeReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeReader.swift; sourceTree = "<group>"; };
-		3A2DF8B4262F4D84000FC8B8 /* QRCodeReaderViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeReaderViewControllerDelegate.swift; sourceTree = "<group>"; };
-		3A2DF8B5262F4D84000FC8B8 /* QRCodeReaderViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeReaderViewContainer.swift; sourceTree = "<group>"; };
-		3A2DF8B6262F4D84000FC8B8 /* QRCodeReaderViewControllerBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeReaderViewControllerBuilder.swift; sourceTree = "<group>"; };
-		3A2DF8B7262F4D84000FC8B8 /* QRCodeReaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeReaderView.swift; sourceTree = "<group>"; };
-		3A2DF8B8262F4D84000FC8B8 /* QRCodeReaderResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeReaderResult.swift; sourceTree = "<group>"; };
-		3A2DF8B9262F4D84000FC8B8 /* SwitchCameraButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCameraButton.swift; sourceTree = "<group>"; };
-		3A2DF8BA262F4D84000FC8B8 /* QRCodeReaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeReaderViewController.swift; sourceTree = "<group>"; };
-		3A2DF8BB262F4D84000FC8B8 /* ToggleTorchButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToggleTorchButton.swift; sourceTree = "<group>"; };
-		3A2DF8BC262F4D84000FC8B8 /* ReaderOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReaderOverlayView.swift; sourceTree = "<group>"; };
 		3A2DF8CA262F4DB6000FC8B8 /* TitaniumKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TitaniumKit.xcframework; path = "$(TITANIUM_SDK)/iphone/Frameworks/TitaniumKit.xcframework"; sourceTree = "<group>"; };
+		3A62FEC129339C33005468CC /* QRScanner.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = QRScanner.xcframework; path = platform/QRScanner.xcframework; sourceTree = "<group>"; };
 		DB34CDDE207B998A005F8E8C /* TiQrcodeModuleAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TiQrcodeModuleAssets.m; path = Classes/TiQrcodeModuleAssets.m; sourceTree = SOURCE_ROOT; };
 		DB34CDDF207B998A005F8E8C /* TiQrcodeModuleAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TiQrcodeModuleAssets.h; path = Classes/TiQrcodeModuleAssets.h; sourceTree = SOURCE_ROOT; };
 		DB34CDE5207B9EBD005F8E8C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -62,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A62FEC229339C33005468CC /* QRScanner.xcframework in Frameworks */,
 				DB34CDE6207B9EBD005F8E8C /* Foundation.framework in Frameworks */,
 				3A2DF8CB262F4DB6000FC8B8 /* TitaniumKit.xcframework in Frameworks */,
 			);
@@ -81,24 +64,6 @@
 			name = QRCodeGenerator;
 			sourceTree = "<group>";
 		};
-		3A2DF8B2262F4D84000FC8B8 /* QRCodeReader */ = {
-			isa = PBXGroup;
-			children = (
-				3A2DF8B3262F4D84000FC8B8 /* QRCodeReader.swift */,
-				3A2DF8B4262F4D84000FC8B8 /* QRCodeReaderViewControllerDelegate.swift */,
-				3A2DF8B5262F4D84000FC8B8 /* QRCodeReaderViewContainer.swift */,
-				3A2DF8B6262F4D84000FC8B8 /* QRCodeReaderViewControllerBuilder.swift */,
-				3A2DF8B7262F4D84000FC8B8 /* QRCodeReaderView.swift */,
-				3A2DF8B8262F4D84000FC8B8 /* QRCodeReaderResult.swift */,
-				3A2DF8B9262F4D84000FC8B8 /* SwitchCameraButton.swift */,
-				3A2DF8BA262F4D84000FC8B8 /* QRCodeReaderViewController.swift */,
-				3A2DF8BB262F4D84000FC8B8 /* ToggleTorchButton.swift */,
-				3A2DF8BC262F4D84000FC8B8 /* ReaderOverlayView.swift */,
-			);
-			name = QRCodeReader;
-			path = Classes/QRCodeReader;
-			sourceTree = "<group>";
-		};
 		DB258CA41F0964DE000D0D8D /* Misc */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,7 +80,6 @@
 		DB258CA51F0964F6000D0D8D /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				3A2DF8B2262F4D84000FC8B8 /* QRCodeReader */,
 				3A017F3E24787C89000776DE /* QRCodeGenerator */,
 				DB52E2421E9CD0F800AAAEE0 /* TiQrcodeModule.swift */,
 			);
@@ -125,6 +89,7 @@
 		DB34CDE2207B9D6A005F8E8C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3A62FEC129339C33005468CC /* QRScanner.xcframework */,
 				3A2DF8CA262F4DB6000FC8B8 /* TitaniumKit.xcframework */,
 				DB34CDE5207B9EBD005F8E8C /* Foundation.framework */,
 			);
@@ -198,7 +163,7 @@
 		DB52E2211E9CCD7000AAAEE0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1250;
+				LastUpgradeCheck = 1410;
 				TargetAttributes = {
 					DB52E2291E9CCD7000AAAEE0 = {
 						CreatedOnToolsVersion = 8.3;
@@ -240,21 +205,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A2DF8C5262F4D84000FC8B8 /* ToggleTorchButton.swift in Sources */,
 				3A017F4324787C98000776DE /* CIColorExtension.swift in Sources */,
-				3A2DF8C6262F4D84000FC8B8 /* ReaderOverlayView.swift in Sources */,
-				3A2DF8C0262F4D84000FC8B8 /* QRCodeReaderViewControllerBuilder.swift in Sources */,
 				3A017F4524787C98000776DE /* UIImageViewExtension.swift in Sources */,
-				3A2DF8C3262F4D84000FC8B8 /* SwitchCameraButton.swift in Sources */,
-				3A2DF8C2262F4D84000FC8B8 /* QRCodeReaderResult.swift in Sources */,
-				3A2DF8BF262F4D84000FC8B8 /* QRCodeReaderViewContainer.swift in Sources */,
 				3A017F4624787C98000776DE /* CIImageExtension.swift in Sources */,
-				3A2DF8BD262F4D84000FC8B8 /* QRCodeReader.swift in Sources */,
 				DB34CDE0207B998A005F8E8C /* TiQrcodeModuleAssets.m in Sources */,
 				DB52E2431E9CD0F800AAAEE0 /* TiQrcodeModule.swift in Sources */,
-				3A2DF8C4262F4D84000FC8B8 /* QRCodeReaderViewController.swift in Sources */,
-				3A2DF8BE262F4D84000FC8B8 /* QRCodeReaderViewControllerDelegate.swift in Sources */,
-				3A2DF8C1262F4D84000FC8B8 /* QRCodeReaderView.swift in Sources */,
 				3A017F4424787C98000776DE /* QRCode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,7 +278,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -384,7 +339,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -420,7 +375,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "TI_VERSION=$(TI_VERSION)";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -469,7 +424,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "TI_VERSION=$(TI_VERSION)";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
