@@ -1,4 +1,4 @@
-# Titanium QR Code Generator
+# Titanium QR Code Generator & Scanner
 
 A simple library for generating and scanning QR codes natively.
 
@@ -25,8 +25,10 @@ const btn = Ti.UI.createButton({
 });
 
 btn.addEventListener('click', () => {
-    QRCode.scan(event => {
-        alert('SUCCESS: ' + event.success + ', TEXT: ' + event.text);
+    QRCode.scan({
+        callback: event => {
+            alert('SUCCESS: ' + event.success + ', TEXT: ' + event.text || 'n/a');
+        }
     });
 });
 
