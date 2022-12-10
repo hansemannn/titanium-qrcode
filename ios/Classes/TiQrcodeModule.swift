@@ -35,7 +35,7 @@ class TiQrcodeModule: TiModule {
 
     qrCode.size = CGSize(width: 450, height: 450)
     
-    if let options = arguments[1] as? [String: Any] {
+    if arguments.count == 2, let options = arguments[1] as? [String: Any] {
       if let size = options["size"] as? [String: Int],
         let width = size["width"],
         let height = size["height"] {

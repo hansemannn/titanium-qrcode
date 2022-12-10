@@ -34,3 +34,4 @@ firebase.auth-iphone-*.zip
 /ios/Carthage
 /android/.gradle
 /android/.project
+/ios/dist
