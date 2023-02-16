@@ -21,7 +21,8 @@ class TiQrcodeModule: TiModule {
     return "ti.qrcode"
   }
   
-  var _scannerCallback: KrollCallback?
+  private var _scannerCallback: KrollCallback?
+  private var _scannerView: QRScannerView?
 
   @objc(fromString:)
   func fromString(arguments: Array<Any>?) -> TiBlob? {
@@ -67,15 +68,24 @@ class TiQrcodeModule: TiModule {
      let focusImage = TiUtils.toImage(params["scanImage"], proxy: self)
      
      let vc = UIViewController()
-     let qrScannerView = QRScannerView(frame: vc.view.bounds)
-     vc.view.addSubview(qrScannerView)
-     qrScannerView.configure(delegate: self, input: .init(focusImage: focusImage, animationDuration: 0.75, isBlurEffectEnabled: true))
-     qrScannerView.startRunning()
+     _scannerView = QRScannerView(frame: vc.view.bounds)
+     guard let _scannerView else { return }
+     
+     vc.view.addSubview(_scannerView)
+     _scannerView.configure(delegate: self, input: .init(focusImage: focusImage, animationDuration: 0.75, isBlurEffectEnabled: true))
+     _scannerView.startRunning()
      
      let nav = UINavigationController(rootViewController: vc)
      nav.isNavigationBarHidden = true
 
      topMostViewController()?.present(nav, animated: true)
+  }
+  
+  @objc(hideActiveScanner:)
+  func hideActiveScanner(unused: [Any]?) {
+    if let _scannerView {
+      _scannerView.parentViewController?.dismiss(animated: true)
+    }
   }
   
   private func topMostViewController() -> UIViewController? {

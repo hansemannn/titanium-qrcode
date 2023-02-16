@@ -30,6 +30,8 @@ btn.addEventListener('click', () => {
             alert('SUCCESS: ' + event.success + ', TEXT: ' + event.text || 'n/a');
         }
     });
+
+    // iOS-only: Use "hideActiveScanner()" to hide the active scanner manually
 });
 
 win.add(btn);
