@@ -1,7 +1,7 @@
 framework module QRScanner {
   umbrella header "QRScanner.h"
-
   export *
+
   module * { export * }
 }
 

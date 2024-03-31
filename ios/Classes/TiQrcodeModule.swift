@@ -66,14 +66,39 @@ class TiQrcodeModule: TiModule {
      _scannerCallback = callback
 
      let focusImage = TiUtils.toImage(params["scanImage"], proxy: self)
+     let cancelButtonTitle = TiUtils.stringValue("cancelButtonTitle", properties: params, def: "Cancel")
      
+     // Create view controller
      let vc = UIViewController()
      _scannerView = QRScannerView(frame: vc.view.bounds)
      guard let _scannerView else { return }
      
+     // Add scanner view
      vc.view.addSubview(_scannerView)
      _scannerView.configure(delegate: self, input: .init(focusImage: focusImage, animationDuration: 0.75, isBlurEffectEnabled: true))
      _scannerView.startRunning()
+     
+     // Add cancel button
+     let cancelButton: UIButton = {
+         if #available(iOS 15.0, *) {
+             return UIButton(configuration: .tinted())
+         } else {
+             return UIButton(type: .system)
+         }
+     }()
+     
+     cancelButton.setTitle(cancelButtonTitle, for: .normal)
+     cancelButton.addTarget(self, action: #selector(self.hideActiveScanner), for: .touchUpInside)
+
+     vc.view.addSubview(cancelButton)
+
+     // Apply auto layout to the cancel button
+     cancelButton.translatesAutoresizingMaskIntoConstraints = false
+     let guide = vc.view.safeAreaLayoutGuide
+     NSLayoutConstraint.activate([
+         cancelButton.bottomAnchor.constraint(equalTo: guide.bottomAnchor, constant: -40),
+         cancelButton.centerXAnchor.constraint(equalTo: vc.view.centerXAnchor)
+     ])
      
      let nav = UINavigationController(rootViewController: vc)
      nav.isNavigationBarHidden = true
@@ -82,7 +107,7 @@ class TiQrcodeModule: TiModule {
   }
   
   @objc(hideActiveScanner:)
-  func hideActiveScanner(unused: [Any]?) {
+  func hideActiveScanner(unused: Any?) {
     if let _scannerView {
       _scannerView.parentViewController?.dismiss(animated: true)
     }
