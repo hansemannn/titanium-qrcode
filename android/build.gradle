@@ -5,5 +5,23 @@ repositories {
 dependencies {
 	implementation 'com.google.zxing:core:3.4.1'
 	implementation 'com.journeyapps:zxing-android-embedded:4.3.0@aar'
-	implementation 'me.dm7.barcodescanner:zxing:1.9.8'
+	implementation('me.dm7.barcodescanner:zxing:1.9.8') {
+		exclude group: 'com.android.support'
+	}
+}
+
+// Titanium writes the pom file of the module without exclusions.
+// Add the exclusion to the pom file, so that the app does not load the old support library.
+publishing {
+	publications.withType(MavenPublication).configureEach {
+		pom.withXml {
+			asNode().dependencies.dependency.findAll {
+				it.groupId.text() == 'me.dm7.barcodescanner'
+			}.each {
+				def exclusion = it.appendNode('exclusions').appendNode('exclusion')
+				exclusion.appendNode('groupId', 'com.android.support')
+				exclusion.appendNode('artifactId', '*')
+			}
+		}
+	}
 }
